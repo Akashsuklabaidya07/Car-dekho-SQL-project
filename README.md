@@ -75,11 +75,11 @@ USE cars;
 
 3. Run the provided SQL queries to perform the analysis.
 
-## echnologies Used
+## Technologies Used
 1. Database: MySQL (or any SQL-based database).
 2. Tools: SQL queries to interact with the dataset.
 
-##Author
+## Author
 Akash Sukla Baidya
 Github | LinkedIn
 
