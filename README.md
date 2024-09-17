@@ -1,34 +1,88 @@
-# CarDekho SQL Analysis Project
+# Car Dekho SQL Queries
 
-This project consists of a series of SQL queries that analyze the data from a car listing dataset (`CarDekho.csv`). The dataset contains various attributes such as the car model, price, year of manufacture, fuel type, transmission type, and other relevant information.
+This project provides SQL solutions to analyze the **Car Dekho.csv** dataset. The queries answer various questions posed by a car dealership manager and clients, focusing on data related to car availability, fuel types, and trends across different years.
 
-## Table of Contents
-- [About the Dataset](#CarDekho.csv)
-- [SQL Queries](#sql-queries)
-- [How to Run](#how-to-run)
-- [Dependencies](#dependencies)
-- [License](#license)
+## Dataset Description
 
-## About the Dataset
+The dataset contains details of cars available in the market, including:
+- **Name**: Car model name.
+- **Year**: The year the car was manufactured.
+- **Selling Price**: The price at which the car is being sold.
+- **Present Price**: The current price of the car.
+- **Kms Driven**: The total kilometers driven by the car.
+- **Fuel Type**: The fuel type of the car (Petrol, Diesel, CNG).
+- **Seller Type**: Dealer or individual selling the car.
+- **Transmission**: Manual or Automatic transmission.
+- **Owner**: The number of previous owners.
 
-The dataset used in this project contains details about cars from the CarDekho website, including the following fields:
-- **Car Name**: The name of the car.
-- **Year**: The manufacturing year of the car.
-- **Selling Price**: The selling price of the car in lakhs.
-- **Present Price**: The current price of the car in lakhs.
-- **Kms Driven**: Total kilometers driven by the car.
-- **Fuel Type**: The type of fuel used by the car (Petrol/Diesel/CNG).
-- **Seller Type**: Whether the seller is a dealer or an individual.
-- **Transmission**: Type of transmission (Manual/Automatic).
-- **Owner**: The number of owners the car has had.
+## Project Structure
 
-## SQL Queries
+- **SQL Schema**: A schema named `cars` is created to store the dataset.
+- **SQL Queries**: Various queries are executed to answer questions related to car data.
 
-Here are the types of SQL queries that were solved using the dataset:
+## SQL Queries and Explanations
 
-1. **Find the top 5 most expensive cars**:
-   ```sql
-   SELECT CarName, Selling_Price
-   FROM CarDekho
-   ORDER BY Selling_Price DESC
-   LIMIT 5;
+### 1. Total Cars Count
+To get the total number of cars available in the dataset:
+```sql
+SELECT count(*) FROM car_dekho;
+```
+### 2. Cars Available in 2023
+#### The manager requested a count of cars that will be available in 2023:
+```sql
+SELECT count(*) FROM car_dekho WHERE year = 2023;
+```
+### 3. Cars Available in 2020, 2021, and 2023
+#### To find out how many cars are available in 2020, 2021, and 2023:
+```sql
+SELECT count(*) FROM car_dekho WHERE year IN (2020, 2021, 2023) GROUP BY year;
+```
+### 4. Total Cars by Year
+#### Print the total number of cars for each year:
+```sql
+SELECT year, count(*) FROM car_dekho GROUP BY year;
+```
+### 5. Diesel Cars in 2020
+#### The manager requested to find how many diesel cars will be available in 2020:
+```sql
+SELECT count(*) FROM car_dekho WHERE year = 2020 AND fuel = 'DIESEL';
+```
+### 6. Cars by Fuel Type per Year
+#### Find the number of cars available by fuel type (Petrol, Diesel, CNG) for each year:
+```sql
+SELECT year, count(*) FROM car_dekho WHERE fuel = 'Petrol' GROUP BY year;
+SELECT year, count(*) FROM car_dekho WHERE fuel = 'Diesel' GROUP BY year;
+SELECT year, count(*) FROM car_dekho WHERE fuel = 'CNG' GROUP BY year;
+```
+### 7. Years with More Than 100 Cars
+#### Find the years where the number of cars is more than 100:
+```sql
+SELECT year, count(*) FROM car_dekho GROUP BY year HAVING count(*) > 100;
+```
+### 8. Cars Between 2015 and 2023
+#### Get the list and count of cars between 2015 and 2023:
+```sql
+SELECT count(*) FROM car_dekho WHERE year BETWEEN 2015 AND 2023;
+SELECT * FROM car_dekho WHERE year BETWEEN 2015 AND 2023;
+```
+## Setup Instructions
+### 1. Create a schema named cars in your database.
+```sql
+CREATE SCHEMA cars;
+USE cars;
+```
+2. Load the Car Dekho dataset into a table named car_dekho.
+
+3. Run the provided SQL queries to perform the analysis.
+
+## echnologies Used
+1. Database: MySQL (or any SQL-based database).
+2. Tools: SQL queries to interact with the dataset.
+
+##Author
+Akash Sukla Baidya
+Github | LinkedIn
+
+
+
+     
