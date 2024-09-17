@@ -81,7 +81,8 @@ USE cars;
 
 ## Author
 Akash Sukla Baidya
-Github | LinkedIn
+
+akashsuklabaidya780@gmail.com
 
 
 
